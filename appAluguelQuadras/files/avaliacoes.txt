@@ -1,0 +1,3 @@
+4.5;victor;12345678901;victor@watanabe.com;esquerda;101
+4.8;thiago;98765432102;thiago@roger.com;direita;102
+3.9;douglas;74185296303;douglas@silva.com;direita;103

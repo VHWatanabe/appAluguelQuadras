@@ -1,0 +1,4 @@
+L;futebol;14;1
+S;victor;12345678901;victor@watanabe.com;esquerda
+S;thiago;98765432102;thiago@roger.com;direita
+S;douglas;74185296303;douglas@silva.com;direita
