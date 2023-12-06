@@ -1,21 +1,25 @@
 package br.edu.infnet.appAluguelQuadras.model.service;
 
 import br.edu.infnet.appAluguelQuadras.model.domain.Pagamento;
+import br.edu.infnet.appAluguelQuadras.model.repositories.PagamentoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class PagamentoService {
-    private Map<Integer, Pagamento> map = new HashMap<Integer, Pagamento>();
 
-    public void incluir(Pagamento pagamento) {
-        map.put(pagamento.getCodigoPagamento(), pagamento);
-    };
+    @Autowired
+    private PagamentoRepository pagamentoRepository;
 
-    public Collection<Pagamento> obterLista() {
-        return map.values();
-    };
+    public void incluir(Pagamento pagamento)
+    {
+        pagamentoRepository.save(pagamento);
+    }
+
+    public Collection<Pagamento> obterLista()
+    {
+        return (Collection<Pagamento>) pagamentoRepository.findAll();
+    }
 }

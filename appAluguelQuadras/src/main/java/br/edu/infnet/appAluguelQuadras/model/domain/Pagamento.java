@@ -1,22 +1,29 @@
 package br.edu.infnet.appAluguelQuadras.model.domain;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+@Entity
+@Table(name = "TPagamento")
 public class Pagamento {
 
+    @OneToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "idSolicitante")
     private Solicitante solicitante;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String numCartao;
     private LocalDate vencimento;
     private int cvv;
     private boolean status;
     private int codigoPagamento;
 
-    DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("MM/yyyy");
-
     @Override
     public String toString() {
-        return String.format("Solicitante: (%s) - Número Cartão: (%s) - ", solicitante, numCartao) + "Vencimento: " + getVencimento().format(dataFormatada) + String.format(" - CVV: (%d) - Status: (%b) - Código Pagamento: (%d)", cvv, status, codigoPagamento);
+        return String.format("Solicitante: (%s) - Número Cartão: (%s) - ", solicitante, numCartao) + "Vencimento: " + getVencimento() + String.format(" - CVV: (%d) - Status: (%b) - Código Pagamento: (%d)", cvv, status, codigoPagamento);
     }
 
     public Solicitante getSolicitante() {
@@ -66,4 +73,8 @@ public class Pagamento {
     public void setCodigoPagamento(int codigoPagamento) {
         this.codigoPagamento = codigoPagamento;
     }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 }

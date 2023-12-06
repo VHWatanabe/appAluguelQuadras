@@ -1,18 +1,31 @@
 package br.edu.infnet.appAluguelQuadras.model.domain;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name = "TSolicitante")
 public class Solicitante {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nome;
     private String cpf;
     private String email;
     private String pernaDominante;
 
+    @ManyToMany (mappedBy = "listaJogadores")
+    private List<Lobby> lobbies;
+
     @Override
     public String toString() {
-        return String.format("Nome: (%s) - CPF: (%s) - Email: (%s) - Perna Dominante: (%s)", nome, cpf, email, pernaDominante);
+        return String.format("Id: (%d) - Nome: (%s) - CPF: (%s) - Email: (%s) - Perna Dominante: (%s)", id, nome, cpf, email, pernaDominante);
     }
 
-    public Solicitante() {
+    public Solicitante() {}
 
+    public Solicitante(Integer id) {
+        this.id = id;
     }
 
     public Solicitante(String nome, String cpf, String email, String pernaDominante) {
@@ -20,6 +33,14 @@ public class Solicitante {
         this.cpf = cpf;
         this.email = email;
         this.pernaDominante = pernaDominante;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -52,5 +73,13 @@ public class Solicitante {
 
     public void setPernaDominante(String pernaDominante) {
         this.pernaDominante = pernaDominante;
+    }
+
+    public List<Lobby> getLobbies() {
+        return lobbies;
+    }
+
+    public void setLobbies(List<Lobby> lobbies) {
+        this.lobbies = lobbies;
     }
 }

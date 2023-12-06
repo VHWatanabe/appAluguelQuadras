@@ -1,6 +1,14 @@
 package br.edu.infnet.appAluguelQuadras.model.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "TMapa")
 public class Mapa {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private int codigoQuadra;
     private double latitude;
     private double longitude;
@@ -11,6 +19,10 @@ public class Mapa {
     public String toString() {
         return String.format("Cód. Quadra: (%d) - Latitude: (%.15f) - Longitude: (%.15f) - Nome: (%s) - Descrição: (%s)", codigoQuadra, latitude, longitude, nome, descricao);
     }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 
     public int getCodigoQuadra() {
         return codigoQuadra;

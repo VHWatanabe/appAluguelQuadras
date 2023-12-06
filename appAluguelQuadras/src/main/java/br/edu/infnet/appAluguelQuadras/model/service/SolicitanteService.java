@@ -1,22 +1,25 @@
 package br.edu.infnet.appAluguelQuadras.model.service;
 
 import br.edu.infnet.appAluguelQuadras.model.domain.Solicitante;
+import br.edu.infnet.appAluguelQuadras.model.repositories.SolicitanteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class SolicitanteService {
 
-    private Map<String, Solicitante> map = new HashMap<String, Solicitante>();
+    @Autowired
+    private SolicitanteRepository solicitanteRepository;
 
-    public void incluir(Solicitante solicitante) {
-        map.put(solicitante.getCpf(), solicitante);
-    };
+    public void incluir(Solicitante solicitante)
+    {
+        solicitanteRepository.save(solicitante);
+    }
 
-    public Collection<Solicitante> obterLista() {
-        return map.values();
-    };
+    public Collection<Solicitante> obterLista()
+    {
+        return (Collection<Solicitante>) solicitanteRepository.findAll();
+    }
 }

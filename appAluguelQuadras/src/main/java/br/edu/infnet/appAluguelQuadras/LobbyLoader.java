@@ -41,17 +41,11 @@ public class LobbyLoader implements ApplicationRunner {
                     lobby.setCodigoLobby(Integer.parseInt(campos[3]));
                     lobby.setListaJogadores(new ArrayList<Solicitante>());
 
-                    lobbyService.incluir(lobby);
-
                     break;
 
                 case "S":
                     Solicitante solicitante = new Solicitante();
-
-                    solicitante.setNome(campos[1]);
-                    solicitante.setCpf(campos[2]);
-                    solicitante.setEmail(campos[3]);
-                    solicitante.setPernaDominante(campos[4]);
+                    solicitante.setId(Integer.valueOf(campos[1]));
 
                     lobby.getListaJogadores().add(solicitante);
 
@@ -63,6 +57,8 @@ public class LobbyLoader implements ApplicationRunner {
 
             linha = leitura.readLine();
         }
+
+        lobbyService.incluir(lobby);
 
         for(Lobby l : lobbyService.obterLista()) {
             System.out.println("[LOBBY] " + l);

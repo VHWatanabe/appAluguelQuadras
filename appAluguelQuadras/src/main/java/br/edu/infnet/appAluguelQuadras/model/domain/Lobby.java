@@ -1,12 +1,21 @@
 package br.edu.infnet.appAluguelQuadras.model.domain;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "TLobby")
 public class Lobby {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String tipoEsporte;
     private int  qtdJogadores;
     private int codigoLobby;
+
+    @ManyToMany (cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn (name = "idLobby")
     private List<Solicitante> listaJogadores;
 
     @Override

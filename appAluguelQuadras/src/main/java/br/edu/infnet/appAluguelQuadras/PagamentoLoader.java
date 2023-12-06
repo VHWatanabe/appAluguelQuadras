@@ -32,12 +32,12 @@ public class PagamentoLoader implements ApplicationRunner {
 
             Pagamento pagamento = new Pagamento();
 
-            pagamento.setSolicitante(new Solicitante(campos[0], campos[1], campos[2], campos[3]));
-            pagamento.setNumCartao(campos[4]);
-            pagamento.setVencimento(LocalDate.parse(campos[5]));
-            pagamento.setCvv(Integer.parseInt(campos[6]));
-            pagamento.setStatus(Boolean.parseBoolean(campos[7]));
-            pagamento.setCodigoPagamento(Integer.parseInt(campos[8]));
+            pagamento.setSolicitante(new Solicitante(Integer.valueOf(campos[0])));
+            pagamento.setNumCartao(campos[1]);
+            pagamento.setVencimento(LocalDate.parse(campos[2]));
+            pagamento.setCvv(Integer.parseInt(campos[3]));
+            pagamento.setStatus(Boolean.parseBoolean(campos[4]));
+            pagamento.setCodigoPagamento(Integer.parseInt(campos[5]));
 
             pagamentoService.incluir(pagamento);
 

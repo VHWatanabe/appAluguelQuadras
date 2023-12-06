@@ -32,8 +32,8 @@ public class AvaliacaoLoader implements ApplicationRunner {
             Avaliacao avaliacao = new Avaliacao();
 
             avaliacao.setNota(Float.parseFloat(campos[0]));
-            avaliacao.setSolicitante(new Solicitante(campos[1], campos[2], campos[3], campos[4]));
-            avaliacao.setCodigoAvaliacao(Integer.parseInt(campos[5]));
+            avaliacao.setSolicitante(new Solicitante(Integer.valueOf(campos[1])));
+            avaliacao.setCodigoAvaliacao(Integer.parseInt(campos[2]));
 
             avaliacaoService.incluir(avaliacao);
 

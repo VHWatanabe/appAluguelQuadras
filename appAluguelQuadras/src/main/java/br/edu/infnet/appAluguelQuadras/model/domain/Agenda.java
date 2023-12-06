@@ -1,22 +1,29 @@
 package br.edu.infnet.appAluguelQuadras.model.domain;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
+@Entity
+@Table(name = "TAgenda")
 public class Agenda {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private LocalTime horario;
     private LocalDate data;
     private String nomeQuadra;
     private float valor;
 
-    DateTimeFormatter horaFormatada = DateTimeFormatter.ofPattern("HH:mm");
-    DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("d-MMM-yyyy");
-
     @Override
     public String toString() {
-        return " Horário: " + getHorario().format(horaFormatada) + " - " + "Data: " + getData().format(dataFormatada) + " - " + String.format("Quadra: (%s) - Valor: (%.2f)", nomeQuadra, valor);
+        return "ID: " + getId() + "Horário: " + getHorario() + " - " + "Data: " + getData() + " - " + String.format("Quadra: (%s) - Valor: (%.2f)", nomeQuadra, valor);
     }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 
     public LocalTime getHorario() {
         return horario;
