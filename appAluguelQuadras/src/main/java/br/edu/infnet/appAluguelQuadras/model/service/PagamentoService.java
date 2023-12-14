@@ -22,4 +22,8 @@ public class PagamentoService {
     {
         return (Collection<Pagamento>) pagamentoRepository.findAll();
     }
+
+    public void excluir (Integer id) {
+        pagamentoRepository.deleteById(id);
+    }
 }

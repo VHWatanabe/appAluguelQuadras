@@ -22,4 +22,8 @@ public class AvaliacaoService {
     {
         return (Collection<Avaliacao>) avaliacaoRepository.findAll();
     }
+
+    public void excluir (Integer id) {
+        avaliacaoRepository.deleteById(id);
+    }
 }

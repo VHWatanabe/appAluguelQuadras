@@ -1,6 +1,8 @@
 package br.edu.infnet.appAluguelQuadras;
 
+import br.edu.infnet.appAluguelQuadras.model.domain.Endereco;
 import br.edu.infnet.appAluguelQuadras.model.domain.Solicitante;
+import br.edu.infnet.appAluguelQuadras.model.service.EnderecoService;
 import br.edu.infnet.appAluguelQuadras.model.service.SolicitanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -34,6 +36,7 @@ public class SolicitanteLoader implements ApplicationRunner {
             solicitante.setCpf(campos[1]);
             solicitante.setEmail(campos[2]);
             solicitante.setPernaDominante(campos[3]);
+            solicitante.setEndereco(new Endereco(campos[4]));
 
             solicitanteService.incluir(solicitante);
 

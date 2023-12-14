@@ -23,6 +23,10 @@ public class Lobby {
         return String.format("Esporte: (%s) - Quantidade de Jogadores: (%d) - Código da Lobby: (%d) - Jogadores: (%s)", tipoEsporte, qtdJogadores, codigoLobby, listaJogadores);
     }
 
+    public Integer getId() {return id;}
+
+    public void setId(Integer id) {this.id = id;}
+
     public String getTipoEsporte() {
         return tipoEsporte;
     }

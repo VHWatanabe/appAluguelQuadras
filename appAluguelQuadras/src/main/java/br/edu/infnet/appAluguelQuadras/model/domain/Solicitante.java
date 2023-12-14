@@ -1,4 +1,6 @@
 package br.edu.infnet.appAluguelQuadras.model.domain;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,7 +16,12 @@ public class Solicitante {
     private String email;
     private String pernaDominante;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idEndereco")
+    private Endereco endereco;
+
     @ManyToMany (mappedBy = "listaJogadores")
+    @JsonBackReference
     private List<Lobby> lobbies;
 
     @Override
@@ -82,4 +89,8 @@ public class Solicitante {
     public void setLobbies(List<Lobby> lobbies) {
         this.lobbies = lobbies;
     }
+
+    public Endereco getEndereco() {return endereco;}
+
+    public void setEndereco(Endereco endereco) {this.endereco = endereco;}
 }

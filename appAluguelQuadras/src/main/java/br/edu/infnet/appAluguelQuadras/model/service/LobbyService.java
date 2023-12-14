@@ -22,4 +22,8 @@ public class LobbyService {
     {
         return (Collection<Lobby>) lobbyRepository.findAll();
     }
+
+    public void excluir (Integer id) {
+        lobbyRepository.deleteById(id);
+    }
 }

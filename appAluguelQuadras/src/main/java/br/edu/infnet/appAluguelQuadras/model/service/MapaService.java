@@ -24,4 +24,8 @@ public class MapaService {
     {
         return (Collection<Mapa>) mapaRepository.findAll();
     }
+
+    public void excluir (Integer id) {
+        mapaRepository.deleteById(id);
+    }
 }

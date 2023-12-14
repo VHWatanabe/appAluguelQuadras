@@ -22,4 +22,8 @@ public class AgendaService {
     {
         return (Collection<Agenda>) agendaRepository.findAll();
     }
+
+    public void excluir (Integer id) {
+        agendaRepository.deleteById(id);
+    }
 }

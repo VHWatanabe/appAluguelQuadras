@@ -1,3 +1,3 @@
-victor;12345678901;victor@watanabe.com;esquerda
-thiago;98765432102;thiago@roger.com;direita
-douglas;74185296303;douglas@silva.com;direita
+victor;12345678901;victor@watanabe.com;esquerda;20010-020
+thiago;98765432102;thiago@roger.com;direita;20010-020
+douglas;74185296303;douglas@silva.com;direita;20010-020
